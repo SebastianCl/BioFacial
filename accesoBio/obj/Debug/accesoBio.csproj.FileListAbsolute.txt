@@ -1,0 +1,96 @@
+c:\users\sebas\documents\visual studio 2015\Projects\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\bin\Debug\accesoBio.pdb
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\bin\Debug\ZedGraph.dll
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\bin\Debug\Emgu.CV.xml
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\bin\Debug\Emgu.CV.UI.xml
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\bin\Debug\Emgu.Util.xml
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+C:\Users\sebas\Documents\Visual Studio 2015\Projects\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\bin\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmAdmin.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucBuscar.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucModificar.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmClave.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucEliminar.resources
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmUsuario.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\bin\Debug\accesoBio.pdb
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmClave.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmAdmin.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmUsuario.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucBuscar.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucEliminar.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucModificar.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
+D:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
+F:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+F:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+F:\Desarrollo de Software\Reconocimiento\ARF-Versions\1\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\bin\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmClave.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucBuscar.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucEliminar.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucModificar.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmAdmin.resources
+C:\Users\sebas\Desktop\ARF-Versions\3\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmPrincipal.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\bin\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmClave.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmAdmin.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmPrincipal.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucBuscar.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucEliminar.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucModificar.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
+C:\Users\sebas\Desktop\ARF-Versions\4\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\bin\Debug\accesoBio.pdb
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmClave.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmAdmin.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmPrincipal.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucBuscar.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucEliminar.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucModificar.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
+C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
