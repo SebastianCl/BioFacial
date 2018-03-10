@@ -16,7 +16,7 @@ namespace accesoBio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAdmin("sebas"));
+            Application.Run(new frmLogin());
         }
     }
 }
