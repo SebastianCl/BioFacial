@@ -8,30 +8,61 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using libDatos;
 
 namespace accesoBio
 {
     public partial class ucBuscar : UserControl
     {
-        clsConexion objCon = new clsConexion();
-        clsCaracteres objCar = new clsCaracteres();
+        #region ATRIBUTOS
+        clsConexion objCon;
+        clsCaracteres objCar;
         private SqlConnection Conector;
         private SqlDataReader Tabla;
-        public byte[] foto;
-        public bool fot = false;
+        byte[] foto;
+        bool fot;
+        #endregion
 
+        #region PROPIEDADES        
+        public byte[] Foto
+        {
+            get
+            {
+                return foto;
+            }
 
+            set
+            {
+                foto = value;
+            }
+        }
+
+        public bool Fot
+        {
+            get
+            {
+                return fot;
+            }
+
+            set
+            {
+                fot = value;
+            }
+        }
+        #endregion
+
+        #region CONSTRUCTOR
         public ucBuscar()
         {
             InitializeComponent();
+            objCon = new clsConexion();
+            objCar = new clsCaracteres();
+            fot = false;
         }
 
-        private void btnBusqueda_Click(object sender, EventArgs e)
-        {
-            buscar();
-        }
+        #endregion
 
+        #region METODOS PRIVADOS
         private void buscar()
         {
             if (txtCedula.Text.Trim() != "")
@@ -48,7 +79,7 @@ namespace accesoBio
                         lblMsj.Visible = false;
                         lblNombre.Text = Tabla[0].ToString();
                         lblNombre.Visible = true;  //muestro el nombre 
-                        foto = (byte[])Tabla[1]; //guardo la imagen
+                        foto = (byte[])Tabla[1]; //guardo la imagen en un array
                         fot = true;
                         if (Tabla[2].ToString() == "A")
                         {
@@ -87,6 +118,14 @@ namespace accesoBio
                 fot = false;
             }
         }
+        #endregion
+
+        #region EVENTOS
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            buscar();
+        }
 
         private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -96,6 +135,7 @@ namespace accesoBio
                 buscar();
             }
         }
-        
+        #endregion
+
     }
 }

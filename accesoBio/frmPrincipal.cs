@@ -12,11 +12,14 @@ using Emgu.CV.Structure;
 using Emgu.CV.CvEnum;
 using System.IO;
 using System.Data.SqlClient;
+using libDatos;
 
 namespace accesoBio
 {
     public partial class frmPrincipal : Form
     {
+        #region ATRIBUTOS
+
         Image<Bgr, byte> marcoActual;
         Capture capturador;
         HaarCascade rostro;
@@ -25,14 +28,70 @@ namespace accesoBio
         Image<Gray, byte> gris = null;
         List<Image<Gray, byte>> listaEntranamientoImagen = new List<Image<Gray, byte>>();
         List<string> listaEtiqueta = new List<string>();
-        List<string> listaNombres = new List<string>();
-        List<string> listaNombrePersonas = new List<string>();
-        int totalRegistros, t;
-        string rol2="", nomReconocido, nombres, nomAdmin;
+        List<string> listaNombres = new List<string>();        
+        int totalRegistros;
+        string rol2 = "", nomReconocido, nomAdmin;
         public string cedula;
         private SqlConnection Conector;
-
         clsConexion objCon = new clsConexion();
+
+        #endregion
+
+        #region CONSTRUCTOR
+
+        public frmPrincipal(string nomReconocido, string rol)
+        {
+            InitializeComponent();
+            rol2 = rol;
+            lblNombre.Text = "Bienvenido \n" + nomReconocido;
+            if (rol.Equals("U"))
+            {
+                lblVista.Text = "Vista de USUARIO";
+                btnMenuAdmin.Visible = false;
+            }
+            else
+            {
+                lblVista.Text = "Vista de ADMINISTRADOR";
+                btnMenuAdmin.Visible = true;
+                nomAdmin = nomReconocido;
+            }
+            liveCam.ImageLocation = "img/default.png";
+
+            rostro = new HaarCascade("haarcascade_frontalface_default.xml");    //cargo la deteccion de rostros por cascada
+
+            try
+            {
+                Conector = objCon.conectar();
+
+                string inst = "SELECT nombre, rostro, cedula FROM usuario";  //obtengo los datos principales 
+                SqlDataReader TablaDatos = objCon.consulta(inst, Conector);
+                totalRegistros = 0;
+
+                while (TablaDatos.Read())
+                {
+                    totalRegistros = totalRegistros + 1;
+
+                    listaNombres.Add(TablaDatos[0].ToString());
+                    listaEtiqueta.Add(TablaDatos[2].ToString());
+
+                    byte[] rostro = (byte[])TablaDatos[1];
+                    MemoryStream ms = new MemoryStream(rostro);
+                    Image img = new Bitmap(ms);
+                    Bitmap bmp = new Bitmap(img);
+                    listaEntranamientoImagen.Add(new Image<Gray, byte>(bmp));
+                }
+                TablaDatos.Close();
+                Conector.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show("No hay información en la base de datos");
+            }
+        }
+        #endregion
+
+        #region EVENTOS
 
         private void btnActivar_Click(object sender, EventArgs e)
         {
@@ -82,63 +141,10 @@ namespace accesoBio
             frmLogin objL = new frmLogin();
             this.Hide();
             objL.Show();
-        }                
-
-        public frmPrincipal(string nomReconocido,string rol)
-        {
-            InitializeComponent();
-            rol2 = rol;
-            lblNombre.Text = "Bienvenido \n" + nomReconocido;
-            if (rol.Equals("U"))
-            {
-                lblVista.Text = "Vista de USUARIO";
-                btnMenuAdmin.Visible = false;
-            }
-            else
-            {
-                lblVista.Text = "Vista de ADMINISTRADOR";
-                btnMenuAdmin.Visible = true;
-                nomAdmin = nomReconocido;
-            }
-            liveCam.ImageLocation = "img/default.png";
-            //cargo la deteccion de rostros por cascada
-            rostro = new HaarCascade("haarcascade_frontalface_default.xml");
-
-            try
-            {
-                Conector = objCon.conectar();
-
-                string inst = "SELECT nombre, rostro, cedula FROM usuario";  //obtengo los datos principales 
-                SqlDataReader TablaDatos = objCon.consulta(inst, Conector);
-                totalRegistros = 0;
-
-                while (TablaDatos.Read())
-                {
-                    totalRegistros = totalRegistros + 1;
-
-                    listaNombres.Add(TablaDatos[0].ToString());
-                    listaEtiqueta.Add(TablaDatos[2].ToString());
-
-                    byte[] rostro = (byte[])TablaDatos[1];
-                    MemoryStream ms = new MemoryStream(rostro);
-                    Image img = new Bitmap(ms);
-                    Bitmap bmp = new Bitmap(img);
-                    listaEntranamientoImagen.Add(new Image<Gray, byte>(bmp));
-                }
-                TablaDatos.Close();
-                Conector.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("No hay información en la base de datos");
-            }
         }
 
         void frameg(object sender, EventArgs e)
         {
-            listaNombrePersonas.Add("");
-
             try
             {
                 marcoActual = capturador.QueryFrame().Resize(320, 240, INTER.CV_INTER_CUBIC); //capturo la imagen actual de la camara
@@ -146,13 +152,12 @@ namespace accesoBio
                 gris = marcoActual.Convert<Gray, Byte>(); //convierto a gris
 
                 //DETECTAR rostro
-                MCvAvgComp[][] rostrosDetectados = gris.DetectHaarCascade(rostro, 1.2, 10, HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
+                MCvAvgComp[][] rostrosDetectados = gris.DetectHaarCascade(rostro, 1.2, 2, HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
 
 
                 //accion para cada elemento detectado
                 foreach (MCvAvgComp f in rostrosDetectados[0])
                 {
-                    t++;
                     resultado = marcoActual.Copy(f.rect).Convert<Gray, byte>().Resize(150, 150, INTER.CV_INTER_CUBIC);  //min 100 max 200
                     marcoActual.Draw(f.rect, new Bgr(Color.DarkBlue), 4); //dibujo un cuadrado en el rostro detectado
 
@@ -171,37 +176,19 @@ namespace accesoBio
                             SqlDataReader TablaNombres = objCon.consulta(inst, Conector);
                             TablaNombres.Read();
                             nomReconocido = TablaNombres[0].ToString();
-                            //rol = TablaNombres[1].ToString();
                             TablaNombres.Close();
                             Conector.Close();
                             marcoActual.Draw(nomReconocido, ref fuente, new Point(f.rect.X - 2, f.rect.Y - 2), new Bgr(Color.DarkRed));//escribo el nombre                            
                         }
-                        //else
-                        //{
-                        //    rol = null;
-                        //}
                     }
-
-                    listaNombrePersonas[t - 1] = cedula;
-                    listaNombrePersonas.Add("");
                 }
-                t = 0;
-
-                //muestro el nombre de los rostros reconocidos
-                for (int nn = 0; nn < rostrosDetectados[0].Length; nn++)
-                {
-                    nombres = nombres + listaNombrePersonas[nn];
-                }
-                nombres = "";
-
-                liveCam.Image = marcoActual;
-                listaNombrePersonas.Clear();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+        #endregion       
+        
     }
 }

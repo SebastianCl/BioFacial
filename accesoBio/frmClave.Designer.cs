@@ -38,6 +38,7 @@
             this.lblMsj = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbVolver = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.gbPregunta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbVolver)).BeginInit();
             this.SuspendLayout();
@@ -136,11 +137,23 @@
             this.pbVolver.TabStop = false;
             this.pbVolver.Click += new System.EventHandler(this.pbVolver_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Location = new System.Drawing.Point(806, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Volver";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // frmClave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 386);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pbVolver);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblMsj);
@@ -171,5 +184,6 @@
         private System.Windows.Forms.Label lblMsj;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pbVolver;
+        private System.Windows.Forms.Label label2;
     }
 }

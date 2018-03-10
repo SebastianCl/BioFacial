@@ -8,28 +8,63 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using libDatos;
+
 
 namespace accesoBio
 {
     public partial class ucModificar : UserControl
     {
-        clsConexion objCon = new clsConexion();
-        clsCaracteres objCar = new clsCaracteres();
+        #region ATRIBUTOS
+        clsConexion objCon;
+        clsCaracteres objCar;
         private SqlConnection Conector;
         private SqlDataReader Tabla;
-        public byte[] foto;
-        public bool fot = false;
+        byte[] foto;
+        bool fot;
+        #endregion
 
+        #region PROPIEDADES
+        public byte[] Foto
+        {
+            get
+            {
+                return foto;
+            }
+
+            set
+            {
+                foto = value;
+            }
+        }
+
+        public bool Fot
+        {
+            get
+            {
+                return fot;
+            }
+
+            set
+            {
+                fot = value;
+            }
+        }
+        #endregion
+
+        #region CONSTRUCTOR
 
         public ucModificar()
         {
             InitializeComponent();
+            objCon = new clsConexion();
+            objCar = new clsCaracteres();
+            fot = false;
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            buscar();
-        }
+        #endregion
+
+        #region METODOS PRIVADOS
 
         private void buscar()
         {
@@ -110,136 +145,50 @@ namespace accesoBio
                 lblMsj.Visible = true;
             }
         }
-
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void actualizarUSUARIO(string rol)
         {
-            btnGuardar.Visible = true;
-            btnDeshacer.Visible = true;
-            btnGuardar.Enabled = true;
-            btnDeshacer.Enabled = true;
-            gbTipo.Enabled = true;
-            gbDatos.Enabled = true;
-            gbSeguridad.Enabled = true;
-            lblClave2.Visible = true;
-            txtClave2.Visible = true;
-            gbCedula.Enabled = false;
-            btnEditar.Enabled = false;
-        }
-
-        private void rdbUsuario_MouseClick(object sender, MouseEventArgs e)
-        {
-            gbSeguridad.Visible = false;
-            gbDatos.Visible = true;
-        }
-
-        private void rdbAdmin_MouseClick(object sender, MouseEventArgs e)
-        {
-            gbSeguridad.Visible = true;
-            gbDatos.Visible = true;
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (rdbUsuario.Checked) //ACTUALIZAR USUARIO
+            try
             {
-                if (!validarDatos())
+                Conector = objCon.conectar();
+                string inst = "UPDATE usuario SET nombre='" + txtNombre.Text.Trim() + "', cedula='" + txtCc.Text.Trim() +
+                                "', rol='" + rol + "' WHERE cedula = '" + txtCedula.Text.Trim() + "'";
+                SqlCommand cmd = new SqlCommand(inst, Conector);
+                cmd.ExecuteNonQuery();
+                Conector.Close();
+                lblMsj.Text = "REGISTRO ACTUALIZADO";
+                lblMsj.Visible = true;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private bool buscarADMON()
+        {
+            try
+            {
+                Conector = objCon.conectar();
+                string inst = "SELECT * FROM ADMON WHERE cedula='" + txtCedula.Text.Trim() + "'";
+                Tabla = objCon.consulta(inst, Conector);
+                if (Tabla.Read())
                 {
-                    lblMsj.Visible = true;
-                    return;
-                }
-                if (buscarADMON())
-                {
-                    actualizarUSUARIO("U"); //si era administrador el rol cambia a U
-                    try
-                    {
-                        Conector = objCon.conectar();
-                        string inst="DELETE FROM admon WHERE cedula= '" + txtCedula.Text.Trim() + "'";
-                        SqlCommand cmd = new SqlCommand(inst,Conector);         //borro el registro de la tabla ADMON
-                        cmd.ExecuteNonQuery();
-                        Conector.Close();                        
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    Conector.Close();
+                    return true;
                 }
                 else
                 {
-                    actualizarUSUARIO("U"); //si era usuario el rol queda igual
-                }                
-                gbCedula.Enabled = true;
-                gbCedula.Text = "";
-                gbDatos.Visible = false;
-                gbTipo.Visible = false;
-                btnEditar.Visible = false;
-                gbSeguridad.Visible = false;
-                btnDeshacer.Visible = false;
-                btnGuardar.Visible = false;
+                    Conector.Close();
+                    return false;
+                }
             }
-
-            if (rdbAdmin.Checked)       //ACTUALIZAR ADMINISTRADOR
+            catch (SqlException ex)
             {
-                if (!validarDatos())
-                {
-                    lblMsj.Visible = true;
-                    return;
-                }
-                if (!validarSeguridad())
-                {
-                    lblMsj.Visible = true;
-                    return;
-                }
-                if (!validarClaves())
-                {
-                    lblMsj.Visible = true;
-                    return;
-                }
-                actualizarUSUARIO("A");                
-                try
-                {                    
-                    string inst;                    
-                    if (buscarADMON())
-                    {
-                        Conector = objCon.conectar();
-                        inst = "UPDATE admon SET cedula='" + txtCc.Text.Trim() + "', pregunta='" + txtPregunta.Text.Trim() +
-                                    "', respuesta='" + txtRespuesta.Text.Trim() + "', clave='" + txtClave1.Text.Trim() +
-                                    "' WHERE cedula = '" + txtCedula.Text.Trim() + "'";
-                        SqlCommand cmd = new SqlCommand(inst, Conector);
-                        cmd.ExecuteNonQuery();
-                        Conector.Close();
-                    }
-                    else
-                    {
-                        Conector = objCon.conectar();
-                        inst = "INSERT INTO admon (cedula,pregunta,respuesta,clave) VALUES(@cedula,@pregunta,@respuesta,@clave)";
-                        SqlCommand cmd = new SqlCommand(inst, Conector);
-                        cmd.Parameters.AddWithValue("@cedula", txtCc.Text.Trim());
-                        cmd.Parameters.AddWithValue("@pregunta", txtPregunta.Text.Trim());
-                        cmd.Parameters.AddWithValue("@respuesta", txtRespuesta.Text.Trim());
-                        cmd.Parameters.AddWithValue("@clave", txtClave1.Text.Trim());
-                        cmd.ExecuteNonQuery();
-                        Conector.Close();
-                    }                    
-                    lblMsj.Text = "ADMINISTRADOR ACTUALIZADO";
-                    lblMsj.Visible = true;
-                    gbCedula.Enabled = true;
-                    gbCedula.Text = "";
-                    gbDatos.Visible = false;
-                    gbTipo.Visible = false;
-                    btnEditar.Visible = false;
-                    gbSeguridad.Visible = false;
-                    btnDeshacer.Visible = false;
-                    btnGuardar.Visible = false;
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                MessageBox.Show(ex.Message);
+                return false;
             }
-           
         }
 
-        #region VALIDACIONES
+
         private bool validarDatos()
         {
             if (txtNombre.Text.Trim() == "")
@@ -287,51 +236,150 @@ namespace accesoBio
             lblMsj.Text = "Las contraseñas no coinciden";
             return false;
         }
-        #endregion
 
-        private void actualizarUSUARIO(string rol)
+        private void actualizar()
         {
-            try
+            if (rdbUsuario.Checked) //ACTUALIZAR USUARIO
             {
-                Conector = objCon.conectar();
-                string inst = "UPDATE usuario SET nombre='" + txtNombre.Text.Trim() + "', cedula='" + txtCc.Text.Trim() +
-                                "', rol='" + rol + "' WHERE cedula = '" + txtCedula.Text.Trim() + "'";
-                SqlCommand cmd = new SqlCommand(inst, Conector);
-                cmd.ExecuteNonQuery();
-                Conector.Close();
-                lblMsj.Text = "REGISTRO ACTUALIZADO";
-                lblMsj.Visible = true;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private bool buscarADMON()
-        {
-            try
-            {
-                Conector = objCon.conectar();
-                string inst = "SELECT * FROM ADMON WHERE cedula='" +txtCedula.Text.Trim() + "'";
-                Tabla = objCon.consulta(inst, Conector);
-                if (Tabla.Read())
+                if (!validarDatos())
                 {
-                    Conector.Close();
-                    return true;
+                    lblMsj.Visible = true;
+                    return;
+                }
+                if (buscarADMON())
+                {
+                    actualizarUSUARIO("U"); //si era administrador el rol cambia a U
+                    try
+                    {
+                        Conector = objCon.conectar();
+                        string inst = "DELETE FROM admon WHERE cedula= '" + txtCedula.Text.Trim() + "'";
+                        SqlCommand cmd = new SqlCommand(inst, Conector);         //borro el registro de la tabla ADMON
+                        txtClave1.Text = string.Empty;                          //limpio los campos de gbDatos
+                        txtClave2.Text = string.Empty;
+                        txtPregunta.Text = string.Empty;
+                        txtRespuesta.Text = string.Empty;
+                        cmd.ExecuteNonQuery();
+                        Conector.Close();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 else
                 {
-                    Conector.Close();
-                    return false;
-                }                
+                    actualizarUSUARIO("U"); //si era usuario el rol queda igual
+                }
+                gbCedula.Enabled = true;
+                gbCedula.Text = "";
+                gbDatos.Visible = false;
+                gbTipo.Visible = false;
+                btnEditar.Visible = false;
+                gbSeguridad.Visible = false;
+                btnDeshacer.Visible = false;
+                btnGuardar.Visible = false;
             }
-            catch (SqlException ex)
+
+            if (rdbAdmin.Checked)       //ACTUALIZAR ADMINISTRADOR
             {
-                MessageBox.Show(ex.Message);
-                return false;
+                if (!validarDatos())
+                {
+                    lblMsj.Visible = true;
+                    return;
+                }
+                if (!validarSeguridad())
+                {
+                    lblMsj.Visible = true;
+                    return;
+                }
+                if (!validarClaves())
+                {
+                    lblMsj.Visible = true;
+                    return;
+                }
+                actualizarUSUARIO("A");
+                try
+                {
+                    string inst;
+                    if (buscarADMON())
+                    {
+                        Conector = objCon.conectar();
+                        inst = "UPDATE admon SET cedula='" + txtCc.Text.Trim() + "', pregunta='" + txtPregunta.Text.Trim() +
+                                    "', respuesta='" + txtRespuesta.Text.Trim() + "', clave='" + txtClave1.Text.Trim() +
+                                    "' WHERE cedula = '" + txtCedula.Text.Trim() + "'";
+                        SqlCommand cmd = new SqlCommand(inst, Conector);
+                        cmd.ExecuteNonQuery();
+                        Conector.Close();
+                    }
+                    else
+                    {
+                        Conector = objCon.conectar();
+                        inst = "INSERT INTO admon (cedula,pregunta,respuesta,clave) VALUES(@cedula,@pregunta,@respuesta,@clave)";
+                        SqlCommand cmd = new SqlCommand(inst, Conector);
+                        cmd.Parameters.AddWithValue("@cedula", txtCc.Text.Trim());
+                        cmd.Parameters.AddWithValue("@pregunta", txtPregunta.Text.Trim());
+                        cmd.Parameters.AddWithValue("@respuesta", txtRespuesta.Text.Trim());
+                        cmd.Parameters.AddWithValue("@clave", txtClave1.Text.Trim());
+                        cmd.ExecuteNonQuery();
+                        Conector.Close();
+                    }
+                    lblMsj.Text = "ADMINISTRADOR ACTUALIZADO";
+                    lblMsj.Visible = true;
+                    gbCedula.Enabled = true;
+                    gbCedula.Text = "";
+                    gbDatos.Visible = false;
+                    gbTipo.Visible = false;
+                    btnEditar.Visible = false;
+                    gbSeguridad.Visible = false;
+                    btnDeshacer.Visible = false;
+                    btnGuardar.Visible = false;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
+        #endregion
 
+        #region EVENTOS
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            btnGuardar.Visible = true;
+            btnDeshacer.Visible = true;
+            btnGuardar.Enabled = true;
+            btnDeshacer.Enabled = true;
+            gbTipo.Enabled = true;
+            gbDatos.Enabled = true;
+            gbSeguridad.Enabled = true;
+            lblClave2.Visible = true;
+            txtClave2.Visible = true;
+            gbCedula.Enabled = false;
+            btnEditar.Enabled = false;
+        }
+
+        private void rdbUsuario_MouseClick(object sender, MouseEventArgs e)
+        {
+            gbSeguridad.Visible = false;
+            gbDatos.Visible = true;
+        }
+
+        private void rdbAdmin_MouseClick(object sender, MouseEventArgs e)
+        {
+            gbSeguridad.Visible = true;
+            gbDatos.Visible = true;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            actualizar();           
+        }
         private void btnDeshacer_Click(object sender, EventArgs e)
         {
             lblMsj.Visible = false;
@@ -369,5 +417,8 @@ namespace accesoBio
         {
             objCar.SoloNumeros(e);
         }
+
+        #endregion
+       
     }
 }

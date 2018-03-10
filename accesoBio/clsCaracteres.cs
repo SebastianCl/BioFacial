@@ -9,6 +9,7 @@ namespace accesoBio
 {
     class clsCaracteres
     {
+        #region METODOS PUBLICOS
         public void SoloNumeros(KeyPressEventArgs e)
         {
             if (Char.IsLetter(e.KeyChar) || Char.IsSeparator(e.KeyChar) || Char.IsSymbol(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
@@ -16,7 +17,6 @@ namespace accesoBio
                 e.Handled = true;
             }
         }
-
         public void SoloLetras(KeyPressEventArgs e)
         {
             if (Char.IsNumber(e.KeyChar) || Char.IsSymbol(e.KeyChar) || Char.IsPunctuation(e.KeyChar))
@@ -24,5 +24,6 @@ namespace accesoBio
                 e.Handled = true;
             }
         }
+        #endregion
     }
 }

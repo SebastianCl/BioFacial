@@ -53,11 +53,12 @@
             // 
             this.liveCam.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.liveCam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.liveCam.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
             this.liveCam.InitialImage = null;
             this.liveCam.Location = new System.Drawing.Point(558, 171);
             this.liveCam.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.liveCam.Name = "liveCam";
-            this.liveCam.Size = new System.Drawing.Size(320, 240);
+            this.liveCam.Size = new System.Drawing.Size(352, 266);
             this.liveCam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.liveCam.TabIndex = 14;
             this.liveCam.TabStop = false;
@@ -67,7 +68,7 @@
             this.pbConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbConfirmar.Enabled = false;
             this.pbConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("pbConfirmar.Image")));
-            this.pbConfirmar.Location = new System.Drawing.Point(558, 35);
+            this.pbConfirmar.Location = new System.Drawing.Point(569, 35);
             this.pbConfirmar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbConfirmar.Name = "pbConfirmar";
             this.pbConfirmar.Size = new System.Drawing.Size(133, 128);
@@ -81,7 +82,7 @@
             // 
             this.pbCamara.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCamara.Image = ((System.Drawing.Image)(resources.GetObject("pbCamara.Image")));
-            this.pbCamara.Location = new System.Drawing.Point(741, 35);
+            this.pbCamara.Location = new System.Drawing.Point(782, 35);
             this.pbCamara.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbCamara.Name = "pbCamara";
             this.pbCamara.Size = new System.Drawing.Size(128, 128);
@@ -107,7 +108,7 @@
             this.btnSalir.ForeColor = System.Drawing.Color.White;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(12, 403);
+            this.btnSalir.Location = new System.Drawing.Point(12, 16);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(32, 35);
             this.btnSalir.TabIndex = 42;
@@ -118,19 +119,18 @@
             // pbAnim
             // 
             this.pbAnim.Image = ((System.Drawing.Image)(resources.GetObject("pbAnim.Image")));
-            this.pbAnim.Location = new System.Drawing.Point(66, 12);
+            this.pbAnim.Location = new System.Drawing.Point(136, 140);
             this.pbAnim.Name = "pbAnim";
             this.pbAnim.Size = new System.Drawing.Size(207, 127);
             this.pbAnim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbAnim.TabIndex = 20;
             this.pbAnim.TabStop = false;
-            this.pbAnim.Visible = false;
             // 
             // lblMensaje
             // 
             this.lblMensaje.AutoSize = true;
             this.lblMensaje.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.Location = new System.Drawing.Point(74, 171);
+            this.lblMensaje.Location = new System.Drawing.Point(51, 112);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(320, 25);
             this.lblMensaje.TabIndex = 17;
@@ -156,6 +156,7 @@
             this.txtContra.PasswordChar = '*';
             this.txtContra.Size = new System.Drawing.Size(206, 44);
             this.txtContra.TabIndex = 17;
+            this.txtContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContra_KeyPress);
             // 
             // lblClave
             // 
@@ -185,7 +186,7 @@
             this.gbClave.Controls.Add(this.lblClave);
             this.gbClave.Controls.Add(this.txtContra);
             this.gbClave.Controls.Add(this.label1);
-            this.gbClave.Location = new System.Drawing.Point(66, 247);
+            this.gbClave.Location = new System.Drawing.Point(56, 274);
             this.gbClave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbClave.Name = "gbClave";
             this.gbClave.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);

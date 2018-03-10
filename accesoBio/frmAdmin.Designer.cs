@@ -45,11 +45,11 @@
             this.btnVer = new System.Windows.Forms.Button();
             this.btnCapturar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbOFF = new System.Windows.Forms.PictureBox();
             this.ucEliminar1 = new accesoBio.ucEliminar();
             this.ucModificar1 = new accesoBio.ucModificar();
             this.ucRegistrar1 = new accesoBio.ucRegistrar();
             this.ucBuscar1 = new accesoBio.ucBuscar();
-            this.pbOFF = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.liveCam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imbFoto)).BeginInit();
@@ -222,6 +222,8 @@
             // imbFoto
             // 
             this.imbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imbFoto.Cursor = System.Windows.Forms.Cursors.Default;
+            this.imbFoto.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.RightClickMenu;
             this.imbFoto.Location = new System.Drawing.Point(959, 113);
             this.imbFoto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.imbFoto.Name = "imbFoto";
@@ -274,6 +276,18 @@
             this.panel2.Size = new System.Drawing.Size(920, 10);
             this.panel2.TabIndex = 37;
             // 
+            // pbOFF
+            // 
+            this.pbOFF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOFF.Image = ((System.Drawing.Image)(resources.GetObject("pbOFF.Image")));
+            this.pbOFF.Location = new System.Drawing.Point(317, 33);
+            this.pbOFF.Name = "pbOFF";
+            this.pbOFF.Size = new System.Drawing.Size(32, 32);
+            this.pbOFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbOFF.TabIndex = 39;
+            this.pbOFF.TabStop = false;
+            this.pbOFF.Click += new System.EventHandler(this.pbOFF_Click);
+            // 
             // ucEliminar1
             // 
             this.ucEliminar1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -282,6 +296,7 @@
             this.ucEliminar1.Name = "ucEliminar1";
             this.ucEliminar1.Size = new System.Drawing.Size(924, 297);
             this.ucEliminar1.TabIndex = 38;
+
             // 
             // ucModificar1
             // 
@@ -309,18 +324,6 @@
             this.ucBuscar1.Name = "ucBuscar1";
             this.ucBuscar1.Size = new System.Drawing.Size(924, 297);
             this.ucBuscar1.TabIndex = 16;
-            // 
-            // pbOFF
-            // 
-            this.pbOFF.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbOFF.Image = ((System.Drawing.Image)(resources.GetObject("pbOFF.Image")));
-            this.pbOFF.Location = new System.Drawing.Point(317, 33);
-            this.pbOFF.Name = "pbOFF";
-            this.pbOFF.Size = new System.Drawing.Size(32, 32);
-            this.pbOFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbOFF.TabIndex = 39;
-            this.pbOFF.TabStop = false;
-            this.pbOFF.Click += new System.EventHandler(this.pbOFF_Click);
             // 
             // frmAdmin
             // 

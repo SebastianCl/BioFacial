@@ -82,10 +82,9 @@
             this.btnSalir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.White;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalir.Location = new System.Drawing.Point(6, 438);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(32, 35);
+            this.btnSalir.Size = new System.Drawing.Size(46, 31);
             this.btnSalir.TabIndex = 48;
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -122,6 +121,7 @@
             // 
             this.liveCam.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.liveCam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.liveCam.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
             this.liveCam.InitialImage = null;
             this.liveCam.Location = new System.Drawing.Point(260, 39);
             this.liveCam.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);

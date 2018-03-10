@@ -1,0 +1,5 @@
+C:\Users\sebas\Desktop\slnAccesoBio\libDatos\bin\Debug\libDatos.dll
+C:\Users\sebas\Desktop\slnAccesoBio\libDatos\bin\Debug\libDatos.pdb
+C:\Users\sebas\Desktop\slnAccesoBio\libDatos\obj\Debug\libDatos.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\slnAccesoBio\libDatos\obj\Debug\libDatos.dll
+C:\Users\sebas\Desktop\slnAccesoBio\libDatos\obj\Debug\libDatos.pdb

@@ -8,76 +8,144 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using libDatos;
 
 namespace accesoBio
 {
     public partial class ucRegistrar : UserControl
     {
-        public string nombre, cedula, rol,clave,pregunta,respuesta;
-        public byte[] foto;
-        public bool act = false;
-        clsConexion objCon = new clsConexion();
-        clsCaracteres objCar = new clsCaracteres();
+        #region ATRIBUTOS
+        string nombre, cedula, rol,clave,pregunta,respuesta;
+        byte[] foto;
+        bool act;
+        clsConexion objCon;
+        clsCaracteres objCar;
         private SqlConnection Conector;
-        SqlDataReader Tabla;
+        private SqlDataReader Tabla;
+        #endregion
 
+        #region PROPIEDADES
+
+        public string Nombre
+        {
+            get
+            {
+                return nombre;
+            }
+
+            set
+            {
+                nombre = value;
+            }
+        }
+
+        public string Cedula
+        {
+            get
+            {
+                return cedula;
+            }
+
+            set
+            {
+                cedula = value;
+            }
+        }
+
+        public string Rol
+        {
+            get
+            {
+                return rol;
+            }
+
+            set
+            {
+                rol = value;
+            }
+        }
+
+        public string Clave
+        {
+            get
+            {
+                return clave;
+            }
+
+            set
+            {
+                clave = value;
+            }
+        }
+
+        public string Pregunta
+        {
+            get
+            {
+                return pregunta;
+            }
+
+            set
+            {
+                pregunta = value;
+            }
+        }
+
+        public string Respuesta
+        {
+            get
+            {
+                return respuesta;
+            }
+
+            set
+            {
+                respuesta = value;
+            }
+        }
+
+        public byte[] Foto
+        {
+            get
+            {
+                return foto;
+            }
+
+            set
+            {
+                foto = value;
+            }
+        }
+
+        public bool Act
+        {
+            get
+            {
+                return act;
+            }
+
+            set
+            {
+                act = value;
+            }
+        }
+        #endregion
+
+        #region CONSTRUCTOR
 
         public ucRegistrar()
         {
             InitializeComponent();
-        }       
-        
-
-        private void rdbAdmin_MouseClick(object sender, MouseEventArgs e)
-        {
-            gbTipo.Enabled = false;
-            gbDatos.Enabled = true;
-            gbSeguridad.Visible = true;
-            gbSeguridad.Enabled = true;
-            btnGuardar.Enabled = true;
-            btnLimpiar.Enabled = true;
-        }
-
-        private void rdbUsuario_MouseClick(object sender, MouseEventArgs e)
-        {
-            gbTipo.Enabled = false;
-            gbDatos.Enabled = true;
-            gbSeguridad.Visible = false;
-            btnGuardar.Enabled = true;
-            btnLimpiar.Enabled = true;
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            lblMsj.Text = "";
-            gbTipo.Enabled = true;
-            gbDatos.Enabled = false;
-            gbSeguridad.Visible = false;
-            btnGuardar.Enabled = false;            
+            objCon = new clsConexion();
+            objCar = new clsCaracteres();
             act = false;
-            txtNombre.Text = "";
-            txtCedula.Text = "";
-            txtClave1.Text = "";
-            txtClave2.Text = "";
-            txtPregunta.Text = "";
-            txtRespuesta.Text = "";
-            rdbAdmin.Checked = false;
-            rdbUsuario.Checked = false;
-            btnLimpiar.Enabled = false;       
         }
 
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            objCar.SoloLetras(e);
-        }
+        #endregion
 
-        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            objCar.SoloNumeros(e);
-        }
+        #region METODOS PRIVADOS
 
-        private void btnRegistrar_Click(object sender, EventArgs e) //guardo los datos 
+        private void registar()
         {
             if (buscarUsuario())
             {
@@ -136,8 +204,6 @@ namespace accesoBio
                 }
             }
         }
-
-        #region VALIDACIONES
         private bool validarDatos()
         {
             if (txtNombre.Text.Trim() == "")
@@ -209,6 +275,63 @@ namespace accesoBio
                 return false;
             }
         }
+        #endregion
+
+        #region EVENTOS
+
+        private void rdbAdmin_MouseClick(object sender, MouseEventArgs e)
+        {
+            gbTipo.Enabled = false;
+            gbDatos.Enabled = true;
+            gbSeguridad.Visible = true;
+            gbSeguridad.Enabled = true;
+            btnGuardar.Enabled = true;
+            btnLimpiar.Enabled = true;
+        }
+
+        private void rdbUsuario_MouseClick(object sender, MouseEventArgs e)
+        {
+            gbTipo.Enabled = false;
+            gbDatos.Enabled = true;
+            gbSeguridad.Visible = false;
+            btnGuardar.Enabled = true;
+            btnLimpiar.Enabled = true;
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            lblMsj.Text = "";
+            gbTipo.Enabled = true;
+            gbDatos.Enabled = false;
+            gbSeguridad.Visible = false;
+            btnGuardar.Enabled = false;
+            act = false;
+            txtNombre.Text = "";
+            txtCedula.Text = "";
+            txtClave1.Text = "";
+            txtClave2.Text = "";
+            txtPregunta.Text = "";
+            txtRespuesta.Text = "";
+            rdbAdmin.Checked = false;
+            rdbUsuario.Checked = false;
+            btnLimpiar.Enabled = false;
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            objCar.SoloLetras(e);
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            objCar.SoloNumeros(e);
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e) //guardo los datos 
+        {
+            registar();
+        }
+
         #endregion
     }
 }

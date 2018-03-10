@@ -94,3 +94,39 @@ C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\s
 C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucModificar.resources
 C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
 C:\Users\sebas\Documents\Reconocimiento\ARF-Versions\Muestra\Acceso Biometrico\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe.config
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\bin\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\bin\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmClave.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmAdmin.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.frmPrincipal.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucBuscar.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucEliminar.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucModificar.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\bin\Debug\libDatos.dll
+C:\Users\sebas\Desktop\slnAccesoBio\accesoBio\bin\Debug\libDatos.pdb
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\bin\Debug\accesoBio.exe.config
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\bin\Debug\accesoBio.exe
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\bin\Debug\accesoBio.pdb
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\bin\Debug\libDatos.dll
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\bin\Debug\libDatos.pdb
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.frmClave.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.frmLogin.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.frmAdmin.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.frmPrincipal.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.Properties.Resources.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.ucBuscar.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.ucEliminar.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.ucModificar.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.ucRegistrar.resources
+C:\Users\sebas\Desktop\GIT\BioFacial\accesoBio\obj\Debug\accesoBio.csproj.GenerateResource.Cache

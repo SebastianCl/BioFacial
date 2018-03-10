@@ -8,28 +8,98 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using libDatos;
+
 
 namespace accesoBio
 {
     public partial class ucEliminar : UserControl
     {
-        clsConexion objCon = new clsConexion();
-        clsCaracteres objCar = new clsCaracteres();
+        #region ATRIBUTOS
+        clsConexion objCon;
+        clsCaracteres objCar;
         private SqlConnection Conector;
         private SqlDataReader Tabla;
-        public byte[] foto;
-        public bool fot = false;
-        string rol;
+        byte[] foto;
+        bool fot;
+        #endregion
 
+        #region PROPIEDADES
+
+        public byte[] Foto
+        {
+            get
+            {
+                return foto;
+            }
+
+            set
+            {
+                foto = value;
+            }
+        }
+
+        public bool Fot
+        {
+            get
+            {
+                return fot;
+            }
+
+            set
+            {
+                fot = value;
+            }
+        }
+        #endregion
+
+        #region CONSTRUCTOR
 
         public ucEliminar()
         {
             InitializeComponent();
+            objCon = new clsConexion();
+            objCar = new clsCaracteres();
+            fot = false;
         }
+        #endregion
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        #region METODOS PRIVADOS               
+        private void eliminar()
         {
-            buscar();    
+            try
+            {
+                Conector = objCon.conectar();
+                string inst = "DELETE FROM usuario WHERE cedula= '" + txtCedula.Text.Trim() + "'"; //borro el registro de la tabla USUARIO
+                SqlCommand cmd = new SqlCommand(inst, Conector);
+                cmd.ExecuteNonQuery();
+                Conector.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (buscarADMON())
+            {
+                try
+                {
+                    Conector = objCon.conectar();
+                    string inst = "DELETE FROM admon WHERE cedula= '" + txtCedula.Text.Trim() + "'"; //borro el registro de la tabla ADMON
+                    SqlCommand cmd = new SqlCommand(inst, Conector);
+                    cmd.ExecuteNonQuery();
+                    Conector.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            lblMsj.Visible = true;
+            lblMsj.Text = "REGISTRO ELIMINADO";
+            fot = false;
+            gbInformacion.Visible = false;
+            btnEliminar.Visible = false;
         }
 
         private void buscar()
@@ -39,7 +109,7 @@ namespace accesoBio
                 try
                 {
                     Conector = objCon.conectar();
-                    string inst = "SELECT nombre, rostro, rol FROM usuario WHERE cedula= '" + txtCedula.Text.Trim() + "'";
+                    string inst = "SELECT nombre, rostro FROM usuario WHERE cedula= '" + txtCedula.Text.Trim() + "'";
                     Tabla = objCon.consulta(inst, Conector);
 
                     if (Tabla.Read())
@@ -50,7 +120,6 @@ namespace accesoBio
                         lblNombre.Visible = true;  //muestro el nombre 
                         foto = (byte[])Tabla[1]; //guardo la imagen
                         fot = true;
-                        rol = Tabla[2].ToString();
                         btnEliminar.Visible = true;
                         Tabla.Close();
                         Conector.Close();
@@ -84,43 +153,6 @@ namespace accesoBio
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Conector = objCon.conectar();
-                string inst = "DELETE FROM usuario WHERE cedula= '" + txtCedula.Text.Trim() + "'"; //borro el registro de la tabla USUARIO
-                SqlCommand cmd = new SqlCommand(inst, Conector);         
-                cmd.ExecuteNonQuery();
-                Conector.Close();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            if (buscarADMON())
-            {
-                try
-                {
-                    Conector = objCon.conectar();
-                    string inst = "DELETE FROM admon WHERE cedula= '" + txtCedula.Text.Trim() + "'"; //borro el registro de la tabla ADMON
-                    SqlCommand cmd = new SqlCommand(inst, Conector);
-                    cmd.ExecuteNonQuery();
-                    Conector.Close();
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            lblMsj.Visible = true;
-            lblMsj.Text = "REGISTRO ELIMINADO";
-            fot = false;
-            gbInformacion.Visible = false;
-            btnEliminar.Visible = false;
-        }
-
         private bool buscarADMON()
         {
             try
@@ -145,6 +177,22 @@ namespace accesoBio
                 return false;
             }
         }
+        #endregion
+
+        #region EVENTOS
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            buscar();
+        }
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogo = MessageBox.Show("Los datos del usuario seran borrados \r ¿Desea eliminar el registro?", "Eliminar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogo == DialogResult.Yes)
+            {
+                eliminar();
+            }
+        }
 
         private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -154,5 +202,8 @@ namespace accesoBio
                 buscar();
             }
         }
+
+        #endregion
+
     }
 }
