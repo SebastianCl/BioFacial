@@ -25,9 +25,9 @@ namespace libDatos
         public clsConexion()
         {
             strNomBD = "bioFacial";
-            strNomSer = "SEBASTIAN\\SQLEXPRESS";
-            strUser = "sa";
-            strPassword = "123456";
+            strNomSer = "Server\\SQLEXPRESS";
+            strUser = "user";
+            strPassword = "password";
         }
         #endregion
 
