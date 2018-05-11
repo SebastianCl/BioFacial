@@ -25,9 +25,9 @@ namespace libDatos
         public clsConexion()
         {
             strNomBD = "bioFacial";
-            strNomSer = "Server\\SQLEXPRESS";
-            strUser = "user";
-            strPassword = "password";
+            strNomSer = "localhost";
+            //strUser = "user";
+            //strPassword = "password";
         }
         #endregion
 
@@ -96,7 +96,9 @@ namespace libDatos
 
         public SqlConnection conectar()
         {
-            objCnx = new SqlConnection("Data Source=" + strNomSer + ";Initial Catalog=" + strNomBD + ";Persist Security Info=false; User ID=" + strUser + "; Password=" + strPassword + ";");
+            //objCnx = new SqlConnection("Data Source=" + strNomSer + ";Initial Catalog=" + strNomBD + ";Persist Security Info=false; User ID=" + strUser + "; Password=" + strPassword + ";");
+            objCnx = new SqlConnection("server = (local); Initial Catalog = " + strNomBD + "; Integrated Security = True");
+
             try
             {
                 objCnx.Open();

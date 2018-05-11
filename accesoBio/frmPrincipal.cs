@@ -20,19 +20,18 @@ namespace accesoBio
     {
         #region ATRIBUTOS
 
-        Image<Bgr, byte> marcoActual;
+        Image<Bgr, byte> imgMarcoActual;
         Capture capturador;
         HaarCascade rostro;
         MCvFont fuente = new MCvFont(FONT.CV_FONT_HERSHEY_TRIPLEX, 0.5d, 0.5d);
-        Image<Gray, byte> resultado;
-        Image<Gray, byte> gris = null;
+        Image<Gray, byte> imgResultado;
+        Image<Gray, byte> imgGris = null;
         List<Image<Gray, byte>> listaEntranamientoImagen = new List<Image<Gray, byte>>();
         List<string> listaEtiqueta = new List<string>();
         List<string> listaNombres = new List<string>();        
-        int totalRegistros;
-        string rol2 = "", nomReconocido, nomAdmin;
-        public string cedula;
-        private SqlConnection Conector;
+        int intTotalRegistros;
+        string strRol2 = "", strNomReconocido, strNomAdmin, strCedula;
+        private SqlConnection objConector;
         clsConexion objCon = new clsConexion();
 
         #endregion
@@ -42,7 +41,7 @@ namespace accesoBio
         public frmPrincipal(string nomReconocido, string rol)
         {
             InitializeComponent();
-            rol2 = rol;
+            strRol2 = rol;
             lblNombre.Text = "Bienvenido \n" + nomReconocido;
             if (rol.Equals("U"))
             {
@@ -53,7 +52,7 @@ namespace accesoBio
             {
                 lblVista.Text = "Vista de ADMINISTRADOR";
                 btnMenuAdmin.Visible = true;
-                nomAdmin = nomReconocido;
+                strNomAdmin = nomReconocido;
             }
             liveCam.ImageLocation = "img/default.png";
 
@@ -61,15 +60,15 @@ namespace accesoBio
 
             try
             {
-                Conector = objCon.conectar();
+                objConector = objCon.conectar();
 
                 string inst = "SELECT nombre, rostro, cedula FROM usuario";  //obtengo los datos principales 
-                SqlDataReader TablaDatos = objCon.consulta(inst, Conector);
-                totalRegistros = 0;
+                SqlDataReader TablaDatos = objCon.consulta(inst, objConector);
+                intTotalRegistros = 0;
 
                 while (TablaDatos.Read())
                 {
-                    totalRegistros = totalRegistros + 1;
+                    intTotalRegistros = intTotalRegistros + 1;
 
                     listaNombres.Add(TablaDatos[0].ToString());
                     listaEtiqueta.Add(TablaDatos[2].ToString());
@@ -81,7 +80,7 @@ namespace accesoBio
                     listaEntranamientoImagen.Add(new Image<Gray, byte>(bmp));
                 }
                 TablaDatos.Close();
-                Conector.Close();
+                objConector.Close();
             }
             catch (Exception ex)
             {
@@ -121,7 +120,7 @@ namespace accesoBio
                     btnActivar.BackColor = Color.Honeydew;
                     btnSalir.Visible = true;
                     lblVista.Visible = true;
-                    if (rol2.Equals("A"))
+                    if (strRol2.Equals("A"))
                     {
                         btnMenuAdmin.Visible = true;
                     }
@@ -131,7 +130,7 @@ namespace accesoBio
 
         private void btnMenuAdmin_Click(object sender, EventArgs e)
         {
-            frmAdmin objAd = new frmAdmin(nomAdmin);
+            frmAdmin objAd = new frmAdmin(strNomAdmin);
             this.Hide();
             objAd.Show();
         }
@@ -147,41 +146,42 @@ namespace accesoBio
         {
             try
             {
-                marcoActual = capturador.QueryFrame().Resize(320, 240, INTER.CV_INTER_CUBIC); //capturo la imagen actual de la camara
+                imgMarcoActual = capturador.QueryFrame().Resize(320, 240, INTER.CV_INTER_CUBIC); //capturo la imagen actual de la camara
 
-                gris = marcoActual.Convert<Gray, Byte>(); //convierto a gris
+                imgGris = imgMarcoActual.Convert<Gray, Byte>(); //convierto a gris
 
                 //DETECTAR rostro
-                MCvAvgComp[][] rostrosDetectados = gris.DetectHaarCascade(rostro, 1.2, 2, HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
+                MCvAvgComp[][] rostrosDetectados = imgGris.DetectHaarCascade(rostro, 1.2, 2, HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
 
 
                 //accion para cada elemento detectado
                 foreach (MCvAvgComp f in rostrosDetectados[0])
                 {
-                    resultado = marcoActual.Copy(f.rect).Convert<Gray, byte>().Resize(150, 150, INTER.CV_INTER_CUBIC);  //min 100 max 200
-                    marcoActual.Draw(f.rect, new Bgr(Color.DarkBlue), 4); //dibujo un cuadrado en el rostro detectado
+                    imgResultado = imgMarcoActual.Copy(f.rect).Convert<Gray, byte>().Resize(150, 150, INTER.CV_INTER_CUBIC);  //min 100 max 200
+                    imgMarcoActual.Draw(f.rect, new Bgr(Color.DarkBlue), 4); //dibujo un cuadrado en el rostro detectado
 
                     if (listaEntranamientoImagen.ToArray().Length != 0)
                     {
-                        MCvTermCriteria termCrit = new MCvTermCriteria(totalRegistros, 0.001);
+                        MCvTermCriteria termCrit = new MCvTermCriteria(intTotalRegistros, 0.001);
 
                         //RECONOCER rostro
                         EigenObjectRecognizer reconocedor = new EigenObjectRecognizer(listaEntranamientoImagen.ToArray(), listaEtiqueta.ToArray(), 2500, ref termCrit);
-                        cedula = reconocedor.Recognize(resultado);//Intenta reconocer la imagen y devolver su etiqueta   
+                        strCedula = reconocedor.Recognize(imgResultado);//Intenta reconocer la imagen y devolver su etiqueta   
 
-                        if (cedula != "")
+                        if (strCedula != "")
                         {
-                            Conector = objCon.conectar();
-                            string inst = "SELECT nombre FROM usuario WHERE cedula= '" + cedula + "'";
-                            SqlDataReader TablaNombres = objCon.consulta(inst, Conector);
+                            objConector = objCon.conectar();
+                            string inst = "SELECT nombre FROM usuario WHERE cedula= '" + strCedula + "'";
+                            SqlDataReader TablaNombres = objCon.consulta(inst, objConector);
                             TablaNombres.Read();
-                            nomReconocido = TablaNombres[0].ToString();
+                            strNomReconocido = TablaNombres[0].ToString();
                             TablaNombres.Close();
-                            Conector.Close();
-                            marcoActual.Draw(nomReconocido, ref fuente, new Point(f.rect.X - 2, f.rect.Y - 2), new Bgr(Color.DarkRed));//escribo el nombre                            
+                            objConector.Close();
+                            imgMarcoActual.Draw(strNomReconocido, ref fuente, new Point(f.rect.X - 2, f.rect.Y - 2), new Bgr(Color.DarkRed));//escribo el nombre                            
                         }
                     }
                 }
+                liveCam.Image = imgMarcoActual;
             }
             catch (Exception ex)
             {

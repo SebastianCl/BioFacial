@@ -36,7 +36,7 @@ BEGIN
 END	
 GO
 
-CREATE PROCEDURE EXECUTE SP_loginAdmin '102'
+CREATE PROCEDURE SP_loginAdmin
 @cedula varchar(15)
 AS
 BEGIN
@@ -51,4 +51,4 @@ CREATE VIEW VW_Usuarios
 	FROM usuario
 GO
 
-SELECT * FROM VW_Usuarios
+SELECT * FROM usuario

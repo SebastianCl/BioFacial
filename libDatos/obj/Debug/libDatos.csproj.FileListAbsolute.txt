@@ -3,3 +3,8 @@ C:\Users\sebas\Desktop\slnAccesoBio\libDatos\bin\Debug\libDatos.pdb
 C:\Users\sebas\Desktop\slnAccesoBio\libDatos\obj\Debug\libDatos.csprojResolveAssemblyReference.cache
 C:\Users\sebas\Desktop\slnAccesoBio\libDatos\obj\Debug\libDatos.dll
 C:\Users\sebas\Desktop\slnAccesoBio\libDatos\obj\Debug\libDatos.pdb
+C:\Users\Sebastian\Documents\GIT\BioFacial\libDatos\bin\Debug\libDatos.dll
+C:\Users\Sebastian\Documents\GIT\BioFacial\libDatos\bin\Debug\libDatos.pdb
+C:\Users\Sebastian\Documents\GIT\BioFacial\libDatos\obj\Debug\libDatos.csprojResolveAssemblyReference.cache
+C:\Users\Sebastian\Documents\GIT\BioFacial\libDatos\obj\Debug\libDatos.dll
+C:\Users\Sebastian\Documents\GIT\BioFacial\libDatos\obj\Debug\libDatos.pdb
